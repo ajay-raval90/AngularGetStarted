@@ -1,10 +1,18 @@
-import {Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 @Component({
-    selector:'event-thumbnail',
-    template:`<div class="well hoverwell thumbnail">
+    selector: 'event-thumbnail',
+    template: `<div class="well hoverwell thumbnail">
         <h2>{{event.name}}</h2>
         <div>Date:  {{event?.date}}</div>
-        <div>Time: {{event?.time}}</div>
+        <div 
+            [ngSwitch]="event?.time"
+            [ngClass]="getStartTimeClass()"
+        >
+            Time: {{event?.time}}
+            <span *ngSwitchCase="'8:00 am'">(Early Start)  </span>
+            <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
+            <span *ngSwitchDefault>(Normal Start)</span>
+        </div>
         <div>Price: \${{event?.price}}</div>
         <div *ngIf="event?.location">
             <span>Location: {{event?.location?.address}}</span>
@@ -14,13 +22,19 @@ import {Component,Input } from '@angular/core';
             Online Url: {{event?.onlineUrl}}
         </div>
     </div>`,
-    styles:[
+    styles: [
         `.pad-left{padding-left:10px;}
         .well div {color:#bbb;}
         .thumbnail{ min-height:210px}
+        .green{ color:#96cb7f !important}
+        .bold{ font-weight:bold}
         `
     ]
 })
-export class EventThumbnailComponent{
-    @Input() event:any
+export class EventThumbnailComponent {
+    @Input() event: any
+    getStartTimeClass() {
+        const isEarlyStart = this.event && this.event.time === '8:00 am';
+        return { "green": isEarlyStart, "bold": isEarlyStart }
+    }
 }
