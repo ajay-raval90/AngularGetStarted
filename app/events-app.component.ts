@@ -4,7 +4,7 @@ import {EventsListComponent} from './events/events-list.component';
   selector:'events-app',
   template:`
   <nav-bar></nav-bar>
-  <events-list></events-list>`,  
+  <router-outlet></router-outlet>`,  
 })
 export class EventsAppComponent
 {
