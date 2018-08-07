@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-
+import {Subject}from 'rxjs/RX';
 @Injectable()
 export class EventService {
 
   getEvents() {
-    return Events;
+    let subject = new Subject();
+    setTimeout(function() {
+      subject.next(Events);
+      subject.complete();
+    }, 2000);
+    return subject;
   }
   getEvent(id: number) {
     return Events.find(t => t.id === id);
