@@ -10,6 +10,7 @@ import { JqService } from './common/jquery-service';
 import { EventDetailsComponent } from "./events/event-details.component";
 import { RouterModule } from "@angular/router";
 import {routes} from './routes';
+import {Error404Component} from './errors/404.component'
 @NgModule({
     imports: [BrowserModule,
     RouterModule.forRoot(routes)
@@ -19,7 +20,8 @@ import {routes} from './routes';
         EventsListComponent,
         EventThumbnailComponent,
         NavBarCompnent,
-        EventDetailsComponent
+        EventDetailsComponent,
+        Error404Component
     ],
     providers: [EventService,ToastrService,JqService],
     bootstrap: [EventsAppComponent]
