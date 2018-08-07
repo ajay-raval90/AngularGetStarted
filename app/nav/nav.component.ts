@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
                 display:none;
             }
         }
+        li > a.active{ color:#F97924 }
         `
 
     ]

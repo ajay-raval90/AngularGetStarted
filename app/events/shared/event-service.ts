@@ -8,7 +8,7 @@ export class EventService {
     setTimeout(function() {
       subject.next(Events);
       subject.complete();
-    }, 2000);
+    }, 10);
     return subject;
   }
   getEvent(id: number) {
