@@ -20,6 +20,7 @@ import {  } from "./events/event-details.component";
 import { RouterModule } from "@angular/router";
 import {routes} from './routes';
 import {Error404Component} from './errors/404.component';
+import { AuthService } from "./user/auth.service";
 @NgModule({
     imports: [BrowserModule,
     RouterModule.forRoot(routes)
@@ -38,7 +39,9 @@ import {Error404Component} from './errors/404.component';
     JqService,
     EventRouteActivator,
     EventRouteDeactivator,
-    EventListResolver],
+    EventListResolver,
+    AuthService
+    ],
     bootstrap: [EventsAppComponent]
 })
 export class AppModule {
