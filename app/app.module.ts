@@ -8,7 +8,8 @@ EventDetailsComponent,
 CreateEventComponent,
 EventRouteActivator,
 EventRouteDeactivator,
-EventListResolver
+EventListResolver,
+CreateSessionComponent
 } from './events/index'
 
 
@@ -35,7 +36,8 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms/";
         NavBarCompnent,
         EventDetailsComponent,
         Error404Component,
-        CreateEventComponent
+        CreateEventComponent,
+        CreateSessionComponent
     ],
     providers: [EventService,
     ToastrService,
