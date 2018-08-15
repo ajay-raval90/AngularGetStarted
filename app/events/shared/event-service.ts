@@ -1,33 +1,37 @@
 import { Injectable } from '@angular/core';
-import {Subject,Observable}from 'rxjs/RX';
-import{IEvent} from './index'
+import { Subject, Observable } from 'rxjs/RX';
+import { IEvent } from './index'
 @Injectable()
 export class EventService {
 
-  getEvents() :Observable<IEvent[]>{
+  getEvents(): Observable<IEvent[]> {
     let subject = new Subject<IEvent[]>();
-    setTimeout(function() {
+    setTimeout(function () {
       subject.next(Events);
       subject.complete();
     }, 10);
     return subject;
   }
-  getEvent(id: number):IEvent {
+  getEvent(id: number): IEvent {
     return Events.find(t => t.id === id);
   }
-  saveEvent(event)
-  {
-    event.id=999;
+  saveEvent(event) {
+    event.id = 999;
     event.session = [];
-    console.log("insiode service",event);
+    console.log("insiode service", event);
     Events.push(event);
   }
+  updateEvent(event: IEvent) {
+    let index = Events.findIndex(t => t.id == event.id);
+    Events[index] = event;
+
+  }
 }
-const Events:IEvent[] = [
+const Events: IEvent[] = [
   {
     id: 1,
     name: 'Angular Connection',
-    date:new Date('9/26/2036'),
+    date: new Date('9/26/2036'),
     time: '10:00 am',
     price: 599.99,
     imageUrl: '/app/assets/images/angularconnect-shield.png',
@@ -317,7 +321,7 @@ const Events:IEvent[] = [
       },
       {
         id: 2,
-        name: "Angular 4 in 60ish Minutes", 
+        name: "Angular 4 in 60ish Minutes",
         presenter: "Dan Wahlin",
         duration: 2,
         level: "Beginner",
