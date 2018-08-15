@@ -21,9 +21,12 @@ import { RouterModule } from "@angular/router";
 import {routes} from './routes';
 import {Error404Component} from './errors/404.component';
 import { AuthService } from "./user/auth.service";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms/";
 @NgModule({
     imports: [BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule
     ],
     declarations: [
         EventsAppComponent,

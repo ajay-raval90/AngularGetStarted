@@ -13,6 +13,6 @@ export class EventRouteDeactivator implements CanDeactivate<CreateEventComponent
         {
             return confirm("There are unsaved changes? Are you sure want to leave this page?")
         }
-        
+        return true;
     }
 }
