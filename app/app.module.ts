@@ -17,10 +17,11 @@ import {
 import { NavBarCompnent } from './nav/nav.component';
 import { EventService } from './events/shared/event-service';
 import {
-    ToastrService,
+    TOASTR_TOKEN,
     JqService,
     CollapsibleWellComponent,
-    LODASH_TOKEN
+    LODASH_TOKEN,
+    IToastr
 } from './common/index';
 import { RouterModule } from "@angular/router";
 import { routes } from './routes';
@@ -30,7 +31,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms/";
 import { DurationPipe } from "./events/shared/index";
 
 declare let _: any
-
+declare let toastr:IToastr
 @NgModule({
     imports: [BrowserModule,
         RouterModule.forRoot(routes),
@@ -51,13 +52,14 @@ declare let _: any
         DurationPipe
     ],
     providers: [EventService,
-        ToastrService,
         JqService,
         EventRouteActivator,
         EventRouteDeactivator,
         EventListResolver,
         AuthService,
-        { provide: LODASH_TOKEN, useValue : _ }
+        { provide: LODASH_TOKEN, useValue : _ },
+        { provide: TOASTR_TOKEN, useValue : toastr },
+        
     ],
     bootstrap: [EventsAppComponent]
 })
