@@ -26,6 +26,7 @@ import { routes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from "./user/auth.service";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms/";
+import { DurationPipe } from "./events/shared/index";
 @NgModule({
     imports: [BrowserModule,
         RouterModule.forRoot(routes),
@@ -42,7 +43,8 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms/";
         CreateEventComponent,
         CreateSessionComponent,
         SessionListComponent,
-        CollapsibleWellComponent
+        CollapsibleWellComponent,
+        DurationPipe
     ],
     providers: [EventService,
         ToastrService,
