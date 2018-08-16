@@ -19,7 +19,8 @@ import { EventService } from './events/shared/event-service';
 import {
     ToastrService,
     JqService,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    LODASH_TOKEN
 } from './common/index';
 import { RouterModule } from "@angular/router";
 import { routes } from './routes';
@@ -27,6 +28,9 @@ import { Error404Component } from './errors/404.component';
 import { AuthService } from "./user/auth.service";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms/";
 import { DurationPipe } from "./events/shared/index";
+
+declare let _: any
+
 @NgModule({
     imports: [BrowserModule,
         RouterModule.forRoot(routes),
@@ -52,7 +56,8 @@ import { DurationPipe } from "./events/shared/index";
         EventRouteActivator,
         EventRouteDeactivator,
         EventListResolver,
-        AuthService
+        AuthService,
+        { provide: LODASH_TOKEN, useValue : _ }
     ],
     bootstrap: [EventsAppComponent]
 })

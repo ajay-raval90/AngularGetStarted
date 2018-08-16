@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "4.0.0",
     "@angular/router": "4.0.0",
     "core-js": "2.4.1",
+    "lodash": "^4.17.10",
     "ng2f-bootstrap": "^0.0.4",
     "ng2f-server": "^0.2.3",
     "rxjs": "5.0.1",
@@ -28,10 +29,10 @@
     "zone.js": "0.8.4"
   },
   "devDependencies": {
-    "concurrently": "3.2.0",
-    "typescript": "2.1.1",
     "@types/core-js": "0.9.34",
-    "@types/node": "6.0.46"
+    "@types/node": "6.0.46",
+    "concurrently": "3.2.0",
+    "typescript": "2.1.1"
   },
   "repository": {}
 }
