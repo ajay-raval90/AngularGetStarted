@@ -22,7 +22,8 @@ import {
     LODASH_TOKEN,
     IToastr,
     JQ_TOKEN,
-    SimpleModalComponent
+    SimpleModalComponent,
+    ModalTriggerDirective
 } from './common/index';
 import { RouterModule } from "@angular/router";
 import { routes } from './routes';
@@ -52,6 +53,7 @@ declare let toastr:IToastr
         SessionListComponent,
         CollapsibleWellComponent,
         SimpleModalComponent,
+        ModalTriggerDirective,
         DurationPipe
     ],
     providers: [EventService,
