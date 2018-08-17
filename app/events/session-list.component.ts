@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, Inject } from '@angular/core'
-import { ISession } from "./shared/index";
+import { ISession, VoterService } from "./shared/index";
 import { LODASH_TOKEN } from "../common/loadsh-service";
+import { AuthService } from '../user/auth.service';
 
 @Component({
     selector: 'session-list',
@@ -11,7 +12,7 @@ export class SessionListComponent implements OnChanges {
     @Input() filterBy: string;
     @Input() sortBy: string;
     visibleSessions: ISession[];
-    constructor( @Inject(LODASH_TOKEN) private _: any) {
+    constructor( @Inject(LODASH_TOKEN) private _: any,private auth:AuthService,private voterService:VoterService) {
 
     }
 
@@ -20,6 +21,25 @@ export class SessionListComponent implements OnChanges {
             this.filterSessions(this.filterBy);
             this.sortSessions(this.sortBy);
         }
+    }
+    toggleVote(session:ISession)
+    {
+        if(this.userHasVoted(session))
+        {
+            this.voterService.deleteVoter(session,this.auth.currentUser.userName);
+        }
+        else
+        {
+            this.voterService.addVoter(session,this.auth.currentUser.userName);
+        }
+        if(this.sortBy ==="votes")
+        {
+            this.sortSessions(this.sortBy);
+        }
+    }
+    userHasVoted(session:ISession)
+    {
+        return this.voterService.userHasVoted(session,this.auth.currentUser.userName);
     }
     filterSessions(filter: string) {
         if (filter === 'all') {
@@ -42,4 +62,5 @@ export class SessionListComponent implements OnChanges {
     private sortByVoteDesc (s1:ISession,s2:ISession) {
         return (s2.voters.length - s1.voters.length);
     }
+    
 }

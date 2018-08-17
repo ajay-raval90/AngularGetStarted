@@ -10,7 +10,8 @@ import {
     EventRouteDeactivator,
     EventListResolver,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    UpvoteComponet
 } from './events/index'
 
 
@@ -30,7 +31,10 @@ import { routes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from "./user/auth.service";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms/";
-import { DurationPipe } from "./events/shared/index";
+import { DurationPipe, VoterService } from "./events/shared/index";
+import { AuthActivator } from './user/auth.activator';
+
+
 
 declare let _: any
 declare let jQuery:Object
@@ -54,6 +58,7 @@ declare let toastr:IToastr
         CollapsibleWellComponent,
         SimpleModalComponent,
         ModalTriggerDirective,
+        UpvoteComponet,
         DurationPipe
     ],
     providers: [EventService,
@@ -61,10 +66,11 @@ declare let toastr:IToastr
         EventRouteDeactivator,
         EventListResolver,
         AuthService,
+        VoterService,
         { provide: LODASH_TOKEN, useValue : _ },
         { provide: TOASTR_TOKEN, useValue : toastr },
         { provide: JQ_TOKEN, useValue : jQuery },
-        
+        AuthActivator
     ],
     bootstrap: [EventsAppComponent]
 })
