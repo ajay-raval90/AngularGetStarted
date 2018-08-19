@@ -17,9 +17,8 @@ export class EventService {
     return Events.find(t => t.id === id);
   }
   saveEvent(event) {
-    event.id = 999;
-    event.session = [];
-    console.log("insiode service", event);
+    event.id = Math.ceil(Math.random() * (2000 - 900) + 900);
+    event.sessions = [];
     Events.push(event);
   }
   updateEvent(event: IEvent) {
